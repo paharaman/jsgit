@@ -9,7 +9,7 @@ const displayElement = element => {
 }
 
 const getInfo = () => {
-    fetch("https://api.learnjavascript.online/demo/notifications/new.json").then(response => response.json())
+    fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
     .then(data => {
         data.forEach(element => {
             displayElement(element);
