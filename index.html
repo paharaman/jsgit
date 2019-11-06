@@ -10,11 +10,10 @@
 <body>
     <div id="main">
         <div id="title">Извличане на данни от някакво API с адрес https://api.learnjavascript.online/demo/shopping-list.json</div>
-        <button id="button">Натисни ме здраво!</button>
+        <button id="button" onclick="getInfo()">Натисни ме здраво!</button>
         <ul id="listings"></ul>
     </div>
     <script>
-        const button = document.querySelector("button");
         const ul = document.querySelector("#listings");
         const displayElement = element => {
         ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
@@ -23,14 +22,10 @@
             fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
                 .then(data => {
                     data.forEach(element => {
-                        displayElement(element);
-        });
-    })
-    button.addEventListener("click", e => {
-        e.preventDefault();
-        getInfo();
-    })
-}
+                        displayElement(`${element.id} : ${element.item}`);
+            });
+        })
+        }
     </script>
 </body>
 </html>
