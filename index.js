@@ -1,6 +1,6 @@
 //import {Backend} from "/backend.js"
 //const api = new Backend;
-//api.setBaseURL("https://api.learnjavascript.online/demo/notifications/new.json");
+//api.setBaseURL("https://api.learnjavascript.online/demo/shopping-list.json");
 const button = document.querySelector("button");
 const ul = document.querySelector("#listings");
 
