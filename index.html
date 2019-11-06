@@ -14,20 +14,18 @@
         <ul id="listings"></ul>
     </div>
     <script>
-        const button = document.querySelector("button");
-const ul = document.querySelector("#listings");
-const displayElement = element => {
-    ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
-}
-const getInfo = () => {
-    fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
-    .then(data => {
-        data.forEach(element => {
-            displayElement(element);
+        const button = querySelector("button");
+        const ul = querySelector("#listings");
+        const displayElement = element => {
+        ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
+        }
+        const getInfo = () => {
+            fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
+                .then(data => {
+                    data.forEach(element => {
+                        displayElement(element);
         });
-
     })
-
     button.addEventListener("click", e => {
         e.preventDefault();
         getInfo();
