@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script type="JavaScript" src="https://paharaman.github.io/jsgit/index.js"></script>
+<!--    <script type="JavaScript" src="https://paharaman.github.io/jsgit/index.js"></script> -->
 </head>
 <body>
     <div id="main">
@@ -13,5 +13,26 @@
         <button id="button">Натисни ме здраво!</button>
         <ul id="listings"></ul>
     </div>
+    <script>
+        const button = document.querySelector("button");
+const ul = document.querySelector("#listings");
+const displayElement = element => {
+    ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
+}
+const getInfo = () => {
+    fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
+    .then(data => {
+        data.forEach(element => {
+            displayElement(element);
+        });
+
+    })
+
+    button.addEventListener("click", e => {
+        e.preventDefault();
+        getInfo();
+    })
+}
+    </script>
 </body>
 </html>
