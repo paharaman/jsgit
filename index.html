@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/JavaScript" src="index.js"></script>
     <title>Document</title>
 <!--    <script type="JavaScript" src="https://paharaman.github.io/jsgit/index.js"></script> -->
 </head>
@@ -11,20 +13,45 @@
     <div id="main">
         <div id="title">Извличане на данни от някакво API с адрес https://api.learnjavascript.online/demo/shopping-list.json</div>
         <button id="button" onclick="getInfo()">Натисни ме здраво!</button>
+        <div id="tableHeader"></div>
         <ul id="listings"></ul>
     </div>
+    <app-table></app-table>
     <script>
         const ul = document.querySelector("#listings");
+        const button = document.querySelector("button");
+        const tableHeader = document.querySelector("#tableHeader");
+        let key1;
+        let key2;
         const displayElement = element => {
-        ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
+            ul.insertAdjacentHTML("beforeend", `<li>${element}</li>`);
         }
+
+        const createTableHeader = () => {
+            tableHeader.insertAdjacentHTML("beforeend", 
+                `<table>
+                    <tr>
+                        <td>${key1} </td> 
+                        <td> : </td> 
+                        <td>${key2} </td>
+                    </tr>
+                </table>`);
+        }
+
         const getInfo = () => {
             fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
                 .then(data => {
                     data.forEach(element => {
                         displayElement(`${element.id} : ${element.item}`);
-            });
-        })
+                    });
+                    data.forEach(element => {
+                        if(Object.keys(element)) {
+                            key1 = Object.keys(element)[0];
+                            key2 = Object.keys(element)[1];
+                        }
+                    })
+                    createTableHeader();  
+                })
         }
     </script>
 </body>
