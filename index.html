@@ -7,16 +7,28 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <script type="text/JavaScript" src="index.js"></script>
     <title>Document</title>
-<!--    <script type="JavaScript" src="https://paharaman.github.io/jsgit/index.js"></script> -->
 </head>
 <body>
     <div id="main">
+        <br>
+        <app-text-para></app-text-para>
+        <br>
+        <br>
         <div id="title">Извличане на данни от някакво API с адрес https://api.learnjavascript.online/demo/shopping-list.json</div>
         <button id="button" onclick="getInfo()">Натисни ме здраво!</button>
         <div id="tableHeader"></div>
         <ul id="listings"></ul>
+        <moreText id="another-text">
+            <style>
+                p{
+                    font-weight: bold;
+                    margin-top:30px;
+                }
+            </style>
+                <p>Благодарим за посещението!</p>
+        </moreText>
+        <app-another-text></app-another-text>
     </div>
-    <app-table></app-table>
     <script>
         const ul = document.querySelector("#listings");
         const button = document.querySelector("button");
