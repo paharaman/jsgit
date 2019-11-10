@@ -8,14 +8,15 @@
     <script type="text/JavaScript" src="index.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body onload="load()">
     <div id="main">
         <br>
         <app-text-para></app-text-para>
-        <br>
-        <br>
+        <br><br>
+        <p id="secondGreeting""></p>
+        <br><br>
         <div id="title">Извличане на данни от някакво API с адрес https://api.learnjavascript.online/demo/shopping-list.json</div>
-        <button id="button" onclick="getInfo()">Натисни ме здраво!</button>
+        <button id="button">Натисни ме здраво!</button>
         <div id="tableHeader"></div>
         <ul id="listings"></ul>
         <moreText id="another-text">
@@ -49,8 +50,7 @@
                     </tr>
                 </table>`);
         }
-
-        const getInfo = () => {
+        button.addEventListener("click", e => {
             fetch("https://api.learnjavascript.online/demo/shopping-list.json").then(response => response.json())
                 .then(data => {
                     data.forEach(element => {
@@ -64,6 +64,23 @@
                     })
                     createTableHeader();  
                 })
+        }, {
+            once:true
+        });
+    </script>
+    <script>//set up the pop up
+        function secondGreet(){
+            let txt;
+            let visitor = prompt("Моля въведете Ваш псевдоним, за да Ви запомним, напр. `зленце`", "злейка");
+                if(visitor == null || visitor == ""){
+                    txt = "Знам, че си ти, зле!";
+                }else{
+                    txt = `Здравей, ${visitor}. Отново посещаваш тази страница :)`;
+                }
+                document.querySelector("#secondGreeting").innerHTML = txt;
+        }
+        function load(){
+            setTimeout("secondGreet()", 3000)
         }
     </script>
 </body>
